@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Divyaa Maddu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f7f9; --ink:#17202b; --muted:#5b6674; --line:#d9dee5; --accent:#1d4ed8; --card:#fff;
+  --open:#16a34a; --closed:#dc2626; --shift:#d99a06;
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#10151c;--ink:#e8ecf1;--muted:#97a1ae;--line:#2a3441;--accent:#7aa2ff;--card:#171e27;--open:#34d399;--closed:#f87171;--shift:#fbbf24}
+}
+:root[data-theme="dark"]{--bg:#10151c;--ink:#e8ecf1;--muted:#97a1ae;--line:#2a3441;--accent:#7aa2ff;--card:#171e27;--open:#34d399;--closed:#f87171;--shift:#fbbf24}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+main{max-width:42rem;margin:0 auto;padding:clamp(3rem,10vh,6rem) 1.5rem 4rem}
+h1{font:600 clamp(2.6rem,9vw,4.2rem)/1.05 var(--serif);letter-spacing:-.02em;margin:1rem 0}
+h2{font:600 1.5rem/1.3 var(--serif);margin:0 0 .4rem}
+.status{display:inline-flex;align-items:center;gap:.5rem;font-size:.9rem;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:.3rem .8rem;background:var(--card)}
+.dot{width:.6rem;height:.6rem;border-radius:50%;background:var(--open);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--open) 60%,transparent)}70%{box-shadow:0 0 0 .5rem transparent}100%{box-shadow:0 0 0 0 transparent}}
+.lede{font-size:1.15rem;color:var(--muted);margin:0 0 3.5rem;max-width:34rem}
+section{margin-bottom:3.5rem}
+.label{font:500 .9rem var(--sans);color:var(--muted);margin:0 0 1.5rem;padding-bottom:.6rem;border-bottom:1px solid var(--line)}
+.project{margin-bottom:3rem}
+.project p{margin:0 0 .75rem;max-width:36rem}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;margin:.25rem 0 1rem;padding:0;list-style:none}
+.chips li{font-size:.82rem;border:1px solid var(--line);background:var(--card);border-radius:99px;padding:.15rem .7rem}
+.demo{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.75rem;margin:1rem 0}
+.demo svg{display:block;width:100%;height:auto}
+.demo .cap{font-size:.88rem;color:var(--muted);margin:.5rem .25rem .1rem;min-height:1.5em}
+.house{fill:var(--line)}
+.pin{cursor:pointer;transition:fill .25s}
+.pin:focus-visible{outline:none;stroke:var(--ink);stroke-width:2}
+.pin[data-s="open"]{fill:var(--open)}.pin[data-s="closed"]{fill:var(--closed)}.pin[data-s="shift"]{fill:var(--shift)}
+.road{stroke:var(--line);stroke-width:10;fill:none;stroke-linecap:round}
+.route{stroke:var(--accent);stroke-width:2;stroke-dasharray:5 5;fill:none}
+.zone{fill:var(--open);opacity:.12;stroke:var(--open);stroke-dasharray:4 4}
+.tourist{fill:var(--accent)}
+a{color:var(--accent);text-underline-offset:.2em;text-decoration-thickness:1px}
+a:hover{text-decoration-thickness:2px}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+.links{display:flex;gap:1.5rem;flex-wrap:wrap}
+footer{color:var(--muted);font-size:.9rem;border-top:1px solid var(--line);padding-top:1.5rem}
+</style>
+</head>
+<body>
+<main>
+  <span class="status"><span class="dot"></span>Open to hackathons and collaborations</span>
+  <h1>Divyaa Maddu 👋</h1>
+  <p class="lede">Third-year B.Tech student at SRM University AP, studying at Kalvium (AI and Future Technologies). I build things at hackathons that help real people in real places: tourists on a trip, shopkeepers on your street.</p>
+
+  <section aria-labelledby="work">
+    <p class="label" id="work">Projects</p>
+
+    <article class="project">
+      <h2>Safely 🧭</h2>
+      <p>A tourist tracking system. A mobile app tracks tourists, and a web dashboard gives the police a live view of where they are.</p>
+      <div class="demo">
+        <svg viewBox="0 0 300 110" role="img" aria-label="A tourist dot moving along a route inside a safe zone">
+          <circle class="zone" cx="150" cy="55" r="48"/>
+          <path id="route" class="route" d="M20 85 C70 20, 110 100, 150 55 S240 10, 280 40"/>
+          <circle cx="20" cy="85" r="3" fill="var(--muted)"/>
+          <circle class="tourist" r="5">
+            <animateMotion dur="9s" repeatCount="indefinite"><mpath href="#route"/></animateMotion>
+          </circle>
+          <circle class="tourist" r="5" opacity=".25">
+            <animateMotion dur="9s" repeatCount="indefinite"><mpath href="#route"/></animateMotion>
+            <animate attributeName="r" values="5;14;5" dur="2s" repeatCount="indefinite"/>
+          </circle>
+        </svg>
+        <p class="cap">The dashboard's view: a tourist moving through a safe zone.</p>
+      </div>
+      <ul class="chips"><li>Mobile app</li><li>Police dashboard</li><li>Live tracking</li><li>Hackathon project</li></ul>
+      <a href="https://github.com/divyaamaddu/Safely">View on GitHub</a>
+    </article>
+
+    <article class="project">
+      <h2>YahiPe 🗺️</h2>
+      <p>The digital map of your neighborhood economy. A hyperlocal marketplace that gives small shops real-time online visibility, so you explore local shops on a live map instead of a static listing. Think Google Maps + Swiggy + Justdial, built for the shop down your street.</p>
+      <div class="demo">
+        <svg id="map" viewBox="0 0 300 160" role="group" aria-label="Interactive neighborhood map. Select a shop to change its status.">
+          <path class="road" d="M10 80 H290"/><path class="road" d="M150 10 V150"/>
+          <g class="house">
+            <rect x="25" y="15" width="40" height="30" rx="5"/><rect x="80" y="15" width="40" height="30" rx="5"/>
+            <rect x="180" y="15" width="40" height="30" rx="5"/><rect x="235" y="15" width="40" height="30" rx="5"/>
+            <rect x="25" y="115" width="40" height="30" rx="5"/><rect x="80" y="115" width="40" height="30" rx="5"/>
+            <rect x="180" y="115" width="40" height="30" rx="5"/><rect x="235" y="115" width="40" height="30" rx="5"/>
+          </g>
+          <circle class="pin" data-n="Kirana store" data-s="open" cx="100" cy="30" r="9" tabindex="0" role="button"/>
+          <circle class="pin" data-n="Salon" data-s="shift" cx="200" cy="30" r="9" tabindex="0" role="button"/>
+          <circle class="pin" data-n="Tailor" data-s="closed" cx="45" cy="130" r="9" tabindex="0" role="button"/>
+          <circle class="pin" data-n="Chemist" data-s="open" cx="255" cy="130" r="9" tabindex="0" role="button"/>
+        </svg>
+        <p class="cap" id="cap" aria-live="polite">Tap a shop to change its status, like a shop owner would.</p>
+      </div>
+      <p>Owners set Open, Closed, Holiday or Staff on shift, and customers see it live. Search by category, filter by open now or cheapest, and see prices up front.</p>
+      <ul class="chips"><li>React + Vite</li><li>Leaflet / Mapbox</li><li>Tailwind</li><li>Node + Express</li><li>MongoDB</li><li>Socket.io</li><li>OTP auth</li></ul>
+      <ul class="chips"><li>SDG 8</li><li>SDG 9</li><li>SDG 11</li></ul>
+      <a href="https://github.com/aizahs31/YahiPe">View on GitHub</a>
+    </article>
+  </section>
+
+  <section aria-labelledby="about">
+    <p class="label" id="about">Education</p>
+    <p>B.Tech, SRM University AP (3rd year).<br>Kalvium, AI and Future Technologies.</p>
+  </section>
+
+  <footer>
+    <div class="links">
+      <a href="https://github.com/divyaamaddu">GitHub</a>
+      <a href="https://www.linkedin.com/in/divyaa-maddu-7646a631b/">LinkedIn</a>
+    </div>
+  </footer>
+</main>
+<script>
+(function(){
+  var order=["open","closed","shift"],
+      label={open:"Open",closed:"Closed",shift:"Staff on shift"},
+      cap=document.getElementById("cap");
+  function cycle(p){
+    var next=order[(order.indexOf(p.dataset.s)+1)%order.length];
+    p.dataset.s=next;
+    cap.textContent=p.dataset.n+": "+label[next];
+  }
+  document.querySelectorAll(".pin").forEach(function(p){
+    p.addEventListener("click",function(){cycle(p)});
+    p.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();cycle(p)}});
+  });
+  if(window.matchMedia("(prefers-reduced-motion: reduce)").matches){
+    document.querySelectorAll("svg").forEach(function(s){if(s.pauseAnimations)s.pauseAnimations()});
+    var d=document.querySelector(".dot");if(d)d.style.animation="none";
+  }
+})();
+</script>
+</body>
+</html>
